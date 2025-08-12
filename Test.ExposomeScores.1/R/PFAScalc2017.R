@@ -3,9 +3,9 @@ PFAScalc2017<-function(data,me.PFOSA.AcOH,PFUA,PFDeA,PFHxS,PFNA,PFOA,PFOS){
     stop("Package 'mirt' is required but not installed.")
   }
 
-  data("WtdQuantile", package = "Test.ExposomeScores.1", envir = environment())
-  data("mod.mirt.sum", package = "Test.ExposomeScores.1", envir = environment())
-  data("mod.mirt.isomer", package = "Test.ExposomeScores.1", envir = environment())
+  data("WtdQuantile", envir = environment())
+  data("mod.mirt.sum",envir = environment())
+  data("mod.mirt.isomer",envir = environment())
 
   data.cont<-data[,c(me.PFOSA.AcOH,PFUA,PFDeA,PFHxS,PFNA,PFOA,PFOS)]
   nm.7pfas<-c("me.PFOSA.AcOH","PFUA","PFDeA","PFHxS","PFNA","PFOA","PFOS")
