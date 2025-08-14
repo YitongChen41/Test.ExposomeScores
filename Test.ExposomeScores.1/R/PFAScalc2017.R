@@ -40,8 +40,10 @@ PFAScalc2017<-function(data,
       try((data.cut[,pfas.i]=as.numeric(cut(data.cont[,pfas.i],WtdQuantile[[pfas.i]],right=FALSE,labels=c(1:(length(WtdQuantile[[pfas.i]])-1))))),silent=TRUE)
     }
     
-    fs.output<-mirt::fscores(mod.mirt.isomer,response.pattern=data.cut)
-    colnames(fs.output)<-c("PFAS burden (isomers)","SE")
+    fs<-mirt::fscores(mod.mirt.isomer,response.pattern=data.cut)
+    colnames(fs)<-c("PFAS burden (isomers)","SE")
+    fs.output<-cbind(data.cont,fs)
+
   }
   else {
     nm.7pfas<-c("me.PFOSA.AcOH","PFUA","PFDeA","PFHxS","PFNA","PFOA","PFOS")
@@ -66,8 +68,9 @@ PFAScalc2017<-function(data,
       try((data.cut[,pfas.i]=as.numeric(cut(data.cont[,pfas.i],WtdQuantile[[pfas.i]],right=FALSE,labels=c(1:(length(WtdQuantile[[pfas.i]])-1))))),silent=TRUE)
     }
     
-    fs.output<-mirt::fscores(mod.mirt.sum,response.pattern=data.cut)
-    colnames(fs.output)<-c("PFAS burden","SE")
+    fs<-mirt::fscores(mod.mirt.sum,response.pattern=data.cut)
+    colnames(fs)<-c("PFAS burden","SE")
+    fs.output<-cbind(data.cont,fs)
     
   }
   return(fs.output)
