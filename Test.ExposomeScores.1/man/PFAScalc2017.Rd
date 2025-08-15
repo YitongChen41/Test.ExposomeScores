@@ -1,8 +1,23 @@
 \name{PFAScalc2017}
-\alias{hello}
+\alias{PFAScalc2017}
 \title{Calculating PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator}
 \usage{
-PFAScalc2017()
+PFAScalc2017(data,
+  me.PFOSA.AcOH=NA,
+  PFUA=NA,
+  PFDeA=NA,
+  PFHxS=NA,
+  PFNA=NA,
+  PFOA=NA,
+  PFOS=NA,
+  n.PFOA=NA,
+  Sm.PFOS=NA,
+  n.PFOS=NA,
+  use.isomers=FALSE)
+}
+\Arguments{
+data A dataframe of individual PFAS measurements
+@param me.PFOSA.AcOH The column name of me-PFOSA-AcOH in the dataframe.
 }
 \description{
 Calculating PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator.
