@@ -20,7 +20,7 @@ Calculating PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden c
 }
 
 \arguments{
-  \item{data}{A dataframe including individual PFAS measurements.}
+  \item{data}{A dataframe including individual PFAS measurements. All PFAS concentrations in the data need to be measured in ng/mL.}
   \item{me.PFOSA.AcOH}{The column name of me-PFOSA-AcOH in the dataframe. If there is no measurement of me-PFOSA-AcOH, \code{me.PFOSA.AcOH=NA}. Default is \code{NA}}
   \item{PFUA}{The column name of PFUA in the dataframe. If there is no measurement of PFUA, \code{PFUA=NA}. Default is \code{NA}}
   \item{PFDeA}{The column name of PFDeA in the dataframe. If there is no measurement of PFDeA, \code{PFDeA=NA}. Default is \code{NA}}
@@ -39,17 +39,15 @@ Calculating PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden c
 }
 
 \details{
-This function calculates the PFAS burden scores basing on two IRT models which use survey-weighted decile cutoffs for PFAS biomarkers calculated from biomonitoring data from 1915 children and adults in the 2017-2018 NHANES. (Liu et al., 2022)
+This function calculates the PFAS burden scores basing on two IRT models which use survey-weighted decile cutoffs for PFAS analytes calculated from biomonitoring data from 1915 children and adults in the 2017-2018 NHANES. (Liu et al., 2022)
 
-PFAS burden (using isomers of PFOA and PFOS) is calculated from 8 PFAS biomarkers: me-PFOSA-AcOH, PFUA, PFDeA, PFHxS, PFNA, n-PFOA, n-PFOS, and Sm-PFOS. 
+PFAS burden (using isomers of PFOA and PFOS) is calculated from 8 PFAS analytes: me-PFOSA-AcOH, PFUA, PFDeA, PFHxS, PFNA, n-PFOA, n-PFOS, and Sm-PFOS. 
 
-PFAS burden (using summed PFOA and PFOS) is calculated from 7 PFAS biomarkers: me-PFOSA-AcOH, PFUA, PFDeA, PFHxS, PFNA, PFOA, and PFOS. In this model, we use the sum concentrations of isomers for PFOA and PFOS instead of using the concentrations of branched and linear isomers (n-PFOS, Sb-PFOA, n-PFOS, and Sm-PFOS).
-
-All PFAS biomarker concentrations in the data need to be measured in ng/mL
+PFAS burden (using summed PFOA and PFOS) is calculated from 7 PFAS analytes: me-PFOSA-AcOH, PFUA, PFDeA, PFHxS, PFNA, PFOA, and PFOS. In this model, we use the sum concentrations of isomers for PFOA and PFOS instead of using the concentrations of branched and linear isomers (n-PFOS, Sb-PFOA, n-PFOS, and Sm-PFOS).
 
 \strong{Quantifying PFAS exposure burden scores using item response theory (IRT)} \cr
 
-We used IRT to understand how the set of assayed PFAS biomarkers provides information about the underlying latent exposure burden to PFAS. IRT-based scores represent estimates of the underlying (latent) PFAS burden and differentially weight the contributions of the individual biomarkers based on their data-driven difficulty and discrimination parameters, with a nonlinear relationship between levels of individual biomarkers and the latent burden.
+We used IRT to understand how the set of assayed PFAS analytes provides information about the underlying latent exposure burden to PFAS. IRT-based scores represent estimates of the underlying (latent) PFAS burden and differentially weight the contributions of the individual analytes based on their data-driven difficulty and discrimination parameters, with a nonlinear relationship between levels of individual analytes and the latent burden.
 
 IRT is a flexible modeling approach with several similarities to confirmatory factor analysis (CFA), which attempts to describe and elucidate the relations of measured items (e.g. PFAS biomarker levels) as indicators for an unobservable latent construct (e.g. latent exposure burden).
 

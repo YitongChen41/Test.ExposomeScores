@@ -21,11 +21,9 @@ PlausibleValuePFAScalc2017(data,
 \description{
 Calculating plausible values of PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator. These plausible values may enable users to verify robustness of PFAS-outcome associations while accounting for standard errors of PFAS burden scores.
 }
-\details{
-xxxxxx
-}
+
 \arguments{
-  \item{data}{A dataframe including individual PFAS measurements.}
+  \item{data}{A dataframe including individual PFAS measurements. All PFAS concentrations in the data need to be measured in ng/mL.}
   \item{me.PFOSA.AcOH}{The column name of me-PFOSA-AcOH in the dataframe. If there is no measurement of me-PFOSA-AcOH, \code{me.PFOSA.AcOH=NA}. Default is \code{NA}}
   \item{PFUA}{The column name of PFUA in the dataframe. If there is no measurement of PFUA, \code{PFUA=NA}. Default is \code{NA}}
   \item{PFDeA}{The column name of PFDeA in the dataframe. If there is no measurement of PFDeA, \code{PFDeA=NA}. Default is \code{NA}}
@@ -45,6 +43,26 @@ xxxxxx
   
   
 }
+
+\details{
+This function calculates the plausible values of estimated PFAS burden scores basing on two IRT models which use survey-weighted decile cutoffs for PFAS analytes calculated from biomonitoring data from 1915 children and adults in the 2017-2018 NHANES. (Liu et al., 2022)
+
+PFAS burden (using isomers of PFOA and PFOS) is calculated from 8 PFAS analytes: me-PFOSA-AcOH, PFUA, PFDeA, PFHxS, PFNA, n-PFOA, n-PFOS, and Sm-PFOS. 
+
+PFAS burden (using summed PFOA and PFOS) is calculated from 7 PFAS analytes: me-PFOSA-AcOH, PFUA, PFDeA, PFHxS, PFNA, PFOA, and PFOS. In this model, we use the sum concentrations of isomers for PFOA and PFOS instead of using the concentrations of branched and linear isomers (n-PFOS, Sb-PFOA, n-PFOS, and Sm-PFOS).
+
+\strong{Add description of plausible values?)} \cr
+
+xxxxxx
+
+
+}
+
+\references{
+Liu, S. H., J. R. Kuiper, Y. Chen, L. Feuerstahler, J. Teresi, and J. P. Buckley. 2022. 'Developing an Exposure Burden Score for Chemical Mixtures Using Item Response Theory, with Applications to PFAS Mixtures', Environ Health Perspect, 130: 117001. \url{https://ehp.niehs.nih.gov/doi/10.1289/EHP10125}
+}
+
+
 \value{
 The function will return a list of plausible values for the estimated PFAS exposure burden.
 }
