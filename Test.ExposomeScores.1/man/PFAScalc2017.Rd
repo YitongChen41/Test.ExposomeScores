@@ -19,11 +19,14 @@ PFAScalc2017(data,
 Calculating PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator.
 }
 \details{
-data A dataframe of individual PFAS measurements
-@param me.PFOSA.AcOH The column name of me-PFOSA-AcOH in the dataframe.
+xxxxxx
+}
+\arguments{
+  \item{data}{A dataframe of individual PFAS measurements.}
+  \item{me.PFOSA.AcOH}{The column name of me-PFOSA-AcOH in the dataframe. \code{a}. Can be NA if there is no measurement of me-PFOSA-AcOH. Default is NA. \code{NA}}
 }
 \value{
-The function will return a dataframe with individual PFAS measurements, estimated PFAS exposure burden and SE of the estimated PFAS burden
+The function will return a dataframe with individual PFAS measurements, estimated PFAS exposure burden and SE of the estimated PFAS burden.
 }
 \examples{
 set.seed(12345)
