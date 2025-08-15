@@ -55,16 +55,14 @@ IRT is a flexible modeling approach with several similarities to confirmatory fa
 
 In an IRT framework, the probability of an individual endorsing an item (e.g. higher PFOA level) is dependent on several factors, including the latent construct (e.g. PFAS burden) and item-specific parameters. Additionally, the probability of endorsing an item increases monotonically with the level of the trait.
 
+For more details, please refer to our paper. \url{https://ehp.niehs.nih.gov/doi/10.1289/EHP10125}.
 
-\strong{For more information, please refer to our paper.} \cr
-
-https://ehp.niehs.nih.gov/doi/10.1289/EHP10125
-
-Liu, S. H., J. R. Kuiper, Y. Chen, L. Feuerstahler, J. Teresi, and J. P. Buckley. 2022. 'Developing an Exposure Burden Score for Chemical Mixtures Using Item Response Theory, with Applications to PFAS Mixtures', Environ Health Perspect, 130: 117001.
 
 }
 
-\references{https://ehp.niehs.nih.gov/doi/10.1289/EHP10125}
+\references{
+Liu, S. H., J. R. Kuiper, Y. Chen, L. Feuerstahler, J. Teresi, and J. P. Buckley. 2022. 'Developing an Exposure Burden Score for Chemical Mixtures Using Item Response Theory, with Applications to PFAS Mixtures', Environ Health Perspect, 130: 117001. \url{https://ehp.niehs.nih.gov/doi/10.1289/EHP10125}
+}
 
 
 \value{
