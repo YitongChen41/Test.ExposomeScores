@@ -46,7 +46,6 @@ The function will return a dataframe with individual PFAS measurements, estimate
 set.seed(12345)
 data.isomer<-data.frame(matrix(sample(1:100,80,replace=T)/10,ncol=8))
 
-### calculating PFAS exposure burden using isomers
 PFAScalc2017(data=data.isomer,
              me.PFOSA.AcOH="X1",
              PFUA="X2",
@@ -58,7 +57,6 @@ PFAScalc2017(data=data.isomer,
              n.PFOS="X8",
              use.isomers=TRUE)
              
-### calculating PFAS exposure burden using sum of isomers
 data.isomer$X9<-data.isomer$X7+data.isomer$X8
 
 PFAScalc2017(data=data.isomer,
