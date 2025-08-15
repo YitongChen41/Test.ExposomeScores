@@ -19,7 +19,7 @@ PlausibleValuePFAScalc2017(data,
   )
 }
 \description{
-Calculating plausible values of PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator.
+Calculating plausible values of PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator. These plausible values may enable users to verify robustness of PFAS-outcome associations while accounting for standard errors of PFAS burden scores.
 }
 \details{
 xxxxxx
@@ -52,18 +52,18 @@ The function will return a list of plausible values for the estimated PFAS expos
 set.seed(12345)
 data.isomer<-data.frame(matrix(sample(1:100,80,replace=T)/10,ncol=8))
 
-PFAScalc2017(data=data.isomer,
-             me.PFOSA.AcOH="X1",
-             PFUA="X2",
-             PFDeA="X3",
-             PFHxS="X4",
-             PFNA="X5",
-             n.PFOA="X6",
-             Sm.PFOS="X7",
-             n.PFOS="X8",
-             ndraws=5,
-             seed=12345,
-             use.isomers=TRUE)
+PlausibleValuePFAScalc2017(data=data.isomer,
+                           me.PFOSA.AcOH="X1",
+                           PFUA="X2",
+                           PFDeA="X3",
+                           PFHxS="X4",
+                           PFNA="X5",
+                           n.PFOA="X6",
+                           Sm.PFOS="X7",
+                           n.PFOS="X8",
+                           ndraws=5,
+                           seed=12345,
+                           use.isomers=TRUE)
 
 }
 
