@@ -1,3 +1,21 @@
+#' Calculate PFAS exposure burden
+#'
+#' This function calculate PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator.
+#' 
+#' @param data A dataframe of individual PFAS measurements
+#' @param me.PFOSA.AcOH The column name of me-PFOSA-AcOH in the dataframe.
+#' @param PFUA The column name of PFUA in the dataframe.
+#' @param PFDeA The column name of PFDeA in the dataframe.
+#' @param PFHxS The column name of PFHxS in the dataframe.
+#' @param PFNA The column name of PFNA in the dataframe.
+#' @param PFOA The column name of PFOA in the dataframe.
+#' @param PFOS The column name of PFOS in the dataframe.
+#' @param n.PFOA The column name of n-PFOA in the dataframe.
+#' @param Sm.PFOS The column name of Sm-PFOS in the dataframe.
+#' @param n.PFOS The column name of n-PFOS in the dataframe.
+#' @param use.isomers Whether using isomers for PFOA and PFOS
+#' 
+#' @return A dataframe with individual PFAS measurements and estimated PFAS exposure burden and SE of the estimated PFAS burden
 
 PFAScalc2017<-function(data,
                        me.PFOSA.AcOH=NA,PFUA=NA,PFDeA=NA,PFHxS=NA,PFNA=NA,
