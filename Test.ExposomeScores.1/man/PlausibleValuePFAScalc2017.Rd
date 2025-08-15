@@ -1,8 +1,8 @@
-\name{PFAScalc2017}
-\alias{PFAScalc2017}
-\title{Calculating PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator}
+\name{PlausibleValuePFAScalc2017}
+\alias{PlausibleValuePFAScalc2017}
+\title{Calculating plausible values of PFAS exposure burden}
 \usage{
-PFAScalc2017(data,
+PlausibleValuePFAScalc2017(data,
   me.PFOSA.AcOH=NA,
   PFUA=NA,
   PFDeA=NA,
@@ -13,10 +13,13 @@ PFAScalc2017(data,
   n.PFOA=NA,
   Sm.PFOS=NA,
   n.PFOS=NA,
-  use.isomers=FALSE)
+  ndraws=50,
+  seed=12345,
+  use.isomers=FALSE
+  )
 }
 \description{
-Calculating PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator.
+Calculating plausible values of PFAS exposure burden using the 2017 - 2018 US PFAS exposure burden calculator.
 }
 \details{
 xxxxxx
@@ -35,18 +38,20 @@ xxxxxx
   \item{Sm.PFOS}{The column name of Sm-PFOS in the dataframe. If there is no measurement of Sm-PFOS, \code{Sm.PFOA=NA}. Default is \code{NA}}
   \item{n.PFOS}{The column name of n-PFOS in the dataframe. If there is no measurement of n-PFOS, \code{n.PFOS=NA}. Default is \code{NA}}
   
+  \item{ndraws}{Number of plausible values for each individual. Default is \code{ndraws=5}}
+  \item{seed}{Specify random seed. Default is \code{seed=12345}}
+  
   \item{use.isomers}{Logical. Whether using the isomers (n-PFOA, Sm-PFOS, and n-PFOS) to calculate PFAS exposure burden or using the sum of isomers (PFOA and PFOS). If \code{use.isomers=TRUE}, the function will calculate PFAS exposure burden using 8 PFAS analytes: me-PFOSA-AcOH, PFUA, PFDeA, PFHxS, PFNA, n-PFOA, Sm-PFOS, and n-PFOS; if \code{use.isomers=FALSE}, the function will calculate PFAS exposure burden from 7 PFAS analytes: me-PFOSA-AcOH, PFUA, PFDeA, PFHxS, PFNA, PFOA, and PFOS. Default is \code{FALSE}}
   
   
 }
 \value{
-The function will return a dataframe with individual PFAS measurements, estimated PFAS exposure burden and SE of the estimated PFAS burden.
+The function will return a list of plausible values for the estimated PFAS exposure burden.
 }
 \examples{
 set.seed(12345)
 data.isomer<-data.frame(matrix(sample(1:100,80,replace=T)/10,ncol=8))
 
-# calculating PFAS exposure burden using isomers
 PFAScalc2017(data=data.isomer,
              me.PFOSA.AcOH="X1",
              PFUA="X2",
@@ -56,20 +61,9 @@ PFAScalc2017(data=data.isomer,
              n.PFOA="X6",
              Sm.PFOS="X7",
              n.PFOS="X8",
+             ndraws=5,
+             seed=12345,
              use.isomers=TRUE)
-
-# calculating PFAS exposure burden using sum of isomers        
-data.isomer$X9<-data.isomer$X7+data.isomer$X8
-
-PFAScalc2017(data=data.isomer,
-             me.PFOSA.AcOH="X1",
-             PFUA="X2",
-             PFDeA="X3",
-             PFHxS="X4",
-             PFNA="X5",
-             PFOA="X6",
-             PFOS="X9",
-             use.isomers=FALSE)
 
 }
 
