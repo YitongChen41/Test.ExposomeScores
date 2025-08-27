@@ -64,13 +64,17 @@ Liu, S. H., J. R. Kuiper, Y. Chen, L. Feuerstahler, J. Teresi, and J. P. Buckley
 
 
 \value{
-The function will return a dataframe with individual PFAS measurements, estimated PFAS exposure burden and SE of the estimated PFAS burden.
+The function will return a list of two objects. 
+\strong{pfas.burden} \cr
+A dataframe of individual PFAS concentrations, estimated PFAS exposure burden, and SE of the estimated PFAS burden.
+\strong{use.isomers} \cr
+A logical statement of whether using isomers of PFOA and PFOS to estimate PFAS burden scores.
 }
 \examples{
 head(PFAScycleJ)
 
 # calculating PFAS exposure burden using isomers
-PFAScalc2017(data=PFAScycleJ,
+PFAS.burden.isomer<-PFAScalc2017(data=PFAScycleJ,
              me.PFOSA.AcOH="me.PFOSA.AcOH",
              PFUA="PFUA",
              PFDeA="PFDeA",
@@ -80,9 +84,10 @@ PFAScalc2017(data=PFAScycleJ,
              Sm.PFOS="Sm.PFOS",
              n.PFOS="n.PFOS",
              use.isomers=TRUE)
+head(PFAS.burden.isomer$pfas.burden)
 
 # calculating PFAS exposure burden using sum of isomers        
-PFAScalc2017(data=PFAScycleJ,
+PFAS.burden<-PFAScalc2017(data=PFAScycleJ,
              me.PFOSA.AcOH="me.PFOSA.AcOH",
              PFUA="PFUA",
              PFDeA="PFDeA",
@@ -91,6 +96,7 @@ PFAScalc2017(data=PFAScycleJ,
              PFOA="PFOA",
              PFOS="PFOS",
              use.isomers=FALSE)
+head(PFAS.burden$pfas.burden)
 
 }
 

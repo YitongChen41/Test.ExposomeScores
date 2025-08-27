@@ -61,6 +61,8 @@ PFAScalc2017<-function(data,
     fs<-mirt::fscores(mod.mirt.isomer,response.pattern=data.cut)
     colnames(fs)<-c("PFAS burden (isomers)","SE")
     fs.output<-cbind(data.cont,fs)
+    
+    ls.output<-list(pfas.burden=fs.output,use.isomers="TRUE")
 
   }
   else {
@@ -90,6 +92,8 @@ PFAScalc2017<-function(data,
     colnames(fs)<-c("PFAS burden","SE")
     fs.output<-cbind(data.cont,fs)
     
+    ls.output<-list(pfas.burden=fs.output,use.isomers="FALSE")
+    
   }
-  return(fs.output)
+  return(ls.output)
 }
