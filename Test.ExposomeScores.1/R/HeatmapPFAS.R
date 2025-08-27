@@ -9,6 +9,9 @@ HeatmapPFAS<-function(plot.object){
   if (!requireNamespace("circlize", quietly = TRUE)) {
     stop("Package 'circlize' is required but not installed.")
   }
+  if(!is.list(plot.object)){
+    stop("Input must be an output object from the PFAScalc2017 function")
+  }
   if(is.null(plot.object$use.isomers)){
     stop("Input must be an output object from the PFAScalc2017 function")
   }
