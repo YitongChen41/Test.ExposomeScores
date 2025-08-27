@@ -68,20 +68,22 @@ The function will return a list of plausible values for the estimated PFAS expos
 }
 \examples{
 set.seed(12345)
-data.isomer<-data.frame(matrix(sample(1:100,80,replace=T)/10,ncol=8))
+plausible.values<-PlausibleValuePFAScalc2017(data=PFAScycleJ,
+                          me.PFOSA.AcOH="me.PFOSA.AcOH",
+                          PFUA="PFUA",
+                          PFDeA="PFDeA",
+                          PFHxS="PFHxS",
+                          PFNA="PFNA",
+                          n.PFOA="n.PFOA",
+                          Sm.PFOS="Sm.PFOS",
+                          n.PFOS="n.PFOS",
+                          ndraws=5,
+                          seed=12345,
+                          use.isomers=TRUE)
 
-PlausibleValuePFAScalc2017(data=data.isomer,
-                           me.PFOSA.AcOH="X1",
-                           PFUA="X2",
-                           PFDeA="X3",
-                           PFHxS="X4",
-                           PFNA="X5",
-                           n.PFOA="X6",
-                           Sm.PFOS="X7",
-                           n.PFOS="X8",
-                           ndraws=5,
-                           seed=12345,
-                           use.isomers=TRUE)
+# 5 plausible values of estimated PFAS burden scores for each participant
+head(do.call("cbind",plausible.values))
+
 
 }
 

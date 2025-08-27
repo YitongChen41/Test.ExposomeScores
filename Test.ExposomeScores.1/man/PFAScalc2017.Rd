@@ -67,7 +67,6 @@ Liu, S. H., J. R. Kuiper, Y. Chen, L. Feuerstahler, J. Teresi, and J. P. Buckley
 The function will return a dataframe with individual PFAS measurements, estimated PFAS exposure burden and SE of the estimated PFAS burden.
 }
 \examples{
-
 head(PFAScycleJ)
 
 # calculating PFAS exposure burden using isomers
