@@ -36,6 +36,10 @@ PFAS Data obtained from the 2017 - 2018 NHANES.
 
 \strong{Age} \cr Participant's age in years.
 
+\strong{`PFAS burden`} \cr Participant's estimated PFAS burden score using summed isomers for PFOA and PFOS.
+
+\strong{`PFAS burden (isomers)`} \cr Participant's estimated PFAS burden score using isomers for PFOA and PFOS.
+
 }
 \references{
 Data documentation for 2017-2018 NHANES Perfluoroalkyl and Polyfluoroalkyl Substances (PFAS_J)
