@@ -67,32 +67,30 @@ Liu, S. H., J. R. Kuiper, Y. Chen, L. Feuerstahler, J. Teresi, and J. P. Buckley
 The function will return a dataframe with individual PFAS measurements, estimated PFAS exposure burden and SE of the estimated PFAS burden.
 }
 \examples{
-set.seed(12345)
-data.isomer<-data.frame(matrix(sample(1:100,80,replace=T)/10,ncol=8))
+
+head(PFAScycleJ)
 
 # calculating PFAS exposure burden using isomers
-PFAScalc2017(data=data.isomer,
-             me.PFOSA.AcOH="X1",
-             PFUA="X2",
-             PFDeA="X3",
-             PFHxS="X4",
-             PFNA="X5",
-             n.PFOA="X6",
-             Sm.PFOS="X7",
-             n.PFOS="X8",
+PFAScalc2017(data=PFAScycleJ,
+             me.PFOSA.AcOH="me.PFOSA.AcOH",
+             PFUA="PFUA",
+             PFDeA="PFDeA",
+             PFHxS="PFHxS",
+             PFNA="PFNA",
+             n.PFOA="n.PFOA",
+             Sm.PFOS="Sm.PFOS",
+             n.PFOS="n.PFOS",
              use.isomers=TRUE)
 
 # calculating PFAS exposure burden using sum of isomers        
-data.isomer$X9<-data.isomer$X7+data.isomer$X8
-
-PFAScalc2017(data=data.isomer,
-             me.PFOSA.AcOH="X1",
-             PFUA="X2",
-             PFDeA="X3",
-             PFHxS="X4",
-             PFNA="X5",
-             PFOA="X6",
-             PFOS="X9",
+PFAScalc2017(data=PFAScycleJ,
+             me.PFOSA.AcOH="me.PFOSA.AcOH",
+             PFUA="PFUA",
+             PFDeA="PFDeA",
+             PFHxS="PFHxS",
+             PFNA="PFNA",
+             PFOA="PFOA",
+             PFOS="PFOS",
              use.isomers=FALSE)
 
 }
