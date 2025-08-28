@@ -1,7 +1,11 @@
 
 #' Comparing the estimated PFAS burden score with 2017-2018 NHANES
 
-PFASburdenNHANEScomparison<-function(ID,Sex,Age,PFAS.burden,use.isomers=FALSE,matched.ratio=5){
+PFASburdenNHANEScomparison<-function(ID,Sex,Age,
+                                          PFAS.burden,use.isomers=FALSE,
+                                          matched.ratio=5,
+                                          bins.num=50,
+                                          plot.density=TRUE){
     
   if (!requireNamespace("MatchIt", quietly = TRUE)) {
     stop("Package 'MatchIt' is required but not installed.")
@@ -23,7 +27,7 @@ PFASburdenNHANEScomparison<-function(ID,Sex,Age,PFAS.burden,use.isomers=FALSE,ma
     data.0<-data.frame(ID=PFAScycleJ$SEQN,
                        Male=PFAScycleJ$Male,
                        Age=PFAScycleJ$Age,
-                       `PFAS burden (isomers)`=PFAScycleJ$`PFAS burden (isomers)`)
+                       PFAS.burden=PFAScycleJ$`PFAS burden (isomers)`)
     data.0$Sample<-0
     
     data.01<-rbind(data.0,data.1)
@@ -37,8 +41,20 @@ PFASburdenNHANEScomparison<-function(ID,Sex,Age,PFAS.burden,use.isomers=FALSE,ma
                                                "1"="Study Sample"),
                                  levels=c("2017-2018 NHANES","Study Sample"))
     
-    plot.output<-ggplot(mtch.data,aes(x=PFAS.burden,color=Comparison,fill=Comparison))+
-      geom_histogram(alpha=0.6,position="identity",bins=50)+
+    output.histogram<-ggplot(mtch.data,aes(x=PFAS.burden,color=Comparison,fill=Comparison))+
+      geom_histogram(alpha=0.5,position="identity",bins=bins.num)+
+      scale_fill_manual(values=c("dodgerblue","coral"))+
+      scale_color_manual(values=c("dodgerblue","coral"))+
+      labs(x="Estimated PFAS burden (isomers)",
+           title="Comparing with the 2017-2018 NHANES \nafter matching for sex and age")+
+      theme_bw()
+    
+    output.density<-ggplot(mtch.data,aes(x=PFAS.burden,color=Comparison,fill=Comparison))+
+      geom_density(alpha=0.3)+
+      scale_fill_manual(values=c("dodgerblue","coral"))+
+      scale_color_manual(values=c("dodgerblue","coral"))+
+      labs(x="Estimated PFAS burden (isomers)",
+           title="Comparing with the 2017-2018 NHANES \nafter matching for sex and age")+
       theme_bw()
     
   }
@@ -47,19 +63,44 @@ PFASburdenNHANEScomparison<-function(ID,Sex,Age,PFAS.burden,use.isomers=FALSE,ma
     data.0<-data.frame(ID=PFAScycleJ$SEQN,
                        Male=PFAScycleJ$Male,
                        Age=PFAScycleJ$Age,
-                       `PFAS burden`=PFAScycleJ$`PFAS burden`)
+                       PFAS.burden=PFAScycleJ$`PFAS burden`)
     data.0$Sample<-0
     
+    data.01<-rbind(data.0,data.1)
+    mtch.01<-MatchIt::matchit(Sample~Male+Age,data=data.01,
+                              exact=~Male,
+                              distance="mahalanobis",method="nearest",
+                              ratio=matched.ratio,replace=TRUE)
     mtch.data<-MatchIt::get_matches(mtch.01)
     mtch.data$Comparison<-factor(dplyr::recode(mtch.data$Sample,
                                                "0"="2017-2018 NHANES",
                                                "1"="Study Sample"),
                                  levels=c("2017-2018 NHANES","Study Sample"))
     
-    plot.output<-ggplot(mtch.data,aes(x=PFAS.burden,color=Comparison,fill=Comparison))+
-      geom_histogram(alpha=0.6,position="identity",bins=50)+
+    output.histogram<-ggplot(mtch.data,aes(x=PFAS.burden,color=Comparison,fill=Comparison))+
+      geom_histogram(alpha=0.5,position="identity",bins=bins.num)+
+      scale_fill_manual(values=c("dodgerblue","coral"))+
+      scale_color_manual(values=c("dodgerblue","coral"))+
+      labs(x="Estimated PFAS burden",
+           title="Comparing with the 2017-2018 NHANES \nafter matching for sex and age")+
       theme_bw()
     
+    output.density<-ggplot(mtch.data,aes(x=PFAS.burden,color=Comparison,fill=Comparison))+
+      geom_density(alpha=0.3)+
+      scale_fill_manual(values=c("dodgerblue","coral"))+
+      scale_color_manual(values=c("dodgerblue","coral"))+
+      labs(x="Estimated PFAS burden",
+           title="Comparing with the 2017-2018 NHANES \nafter matching for sex and age")+
+      theme_bw()
+    
+    
+    
+  }
+  
+  if(plot.density){
+    plot.output<-output.density
+  } else {
+    plot.output<-output.histogram
   }
   
   return(plot.output)
