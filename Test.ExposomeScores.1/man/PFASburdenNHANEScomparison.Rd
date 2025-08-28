@@ -2,10 +2,17 @@
 \alias{PFASburdenNHANEScomparison}
 \title{Plotting the distribution of PFAS exposure burden scores between sample population and the age- and sex-matched participants in NHANES}
 \usage{
-PFASburdenNHANEScomparison(ID,Sex,Age,PFAS.burden,use.isomers=FALSE,matched.ratio=5,bins.num=50,plot.density=TRUE)
+PFASburdenNHANEScomparison(ID,
+                          Sex,
+                          Age,
+                          PFAS.burden,
+                          use.isomers=FALSE,
+                          matched.ratio=5,
+                          bins.num=50,
+                          plot.density=TRUE)
 }
 \description{
-This function plots the distribution (density or histogram) of the PFAS exposure burden scores between the study sample population and the age- and sex-matched participants in the 2017-2018 NHANES cycle
+This function plots the distribution (density or histogram) of the PFAS exposure burden scores between the study sample population and the age- and sex-matched participants in the 2017-2018 NHANES cycle.
 }
 
 \arguments{

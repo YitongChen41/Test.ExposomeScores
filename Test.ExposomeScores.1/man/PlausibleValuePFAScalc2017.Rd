@@ -51,11 +51,8 @@ PFAS burden (using isomers of PFOA and PFOS) is calculated from 8 PFAS analytes:
 
 PFAS burden (using summed PFOA and PFOS) is calculated from 7 PFAS analytes: me-PFOSA-AcOH, PFUA, PFDeA, PFHxS, PFNA, PFOA, and PFOS. In this model, we use the sum concentrations of isomers for PFOA and PFOS instead of using the concentrations of branched and linear isomers (n-PFOS, Sb-PFOA, n-PFOS, and Sm-PFOS).
 
-\strong{Add description of plausible values?)} \cr
-
-xxxxxx
-
-
+\strong{Plausible values of the estimated PFAS exposure burden score)} \cr
+The PFAS exposure burden score estimated from IRT models have standard errors. This function can calculate plausible values of the estimated PFAS burden for researchers to perform secondary analyses to account for the uncertainty in latent burden scores. 
 }
 
 \references{
